@@ -1,17 +1,21 @@
-# ---------- Build Stage ----------
-FROM alpine:latest AS builder
+FROM archlinux:latest
 
-RUN apk add --no-cache g++ make
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm \
+        base-devel \
+        cmake \
+        ninja \
+        gcc \
+        qt6-base && \
+    pacman -Scc --noconfirm
 
 WORKDIR /app
+
 COPY . .
-RUN make LDFLAGS="-static"
 
-# ---------- Runtime Stage ----------
-FROM alpine:latest
+RUN rm -rf build && \
+    cmake -S . -B build -G Ninja && \
+    cmake --build build
+ENV DISPLAY=:0
 
-WORKDIR /app
-COPY --from=builder /app/myapp .
-
-CMD ["./myapp"]
-LABEL Name=dockerfun Version=0.0.1
+CMD ["./build/Docker_Fun_QT"]
