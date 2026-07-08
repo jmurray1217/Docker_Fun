@@ -1,0 +1,11 @@
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: dockerfun:latest
+    container_name: dockerfun
+
+    stdin_open: true
+    tty: true
