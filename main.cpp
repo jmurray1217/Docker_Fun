@@ -1,9 +1,11 @@
-#include <fstream>
-#include "tools.hpp"
+#include "mainwindow.h"
 
-int main() {
-    print_hello();
-    std::ofstream out("/app/data/tasks.txt");
-    out << "Buy milk\n";
-    return 0;
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return QApplication::exec();
 }
