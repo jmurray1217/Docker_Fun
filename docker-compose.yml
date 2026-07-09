@@ -1,6 +1,8 @@
 services:
   qtapp:
     build: .
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
     container_name: dockerfun
 
     environment:
@@ -14,3 +16,4 @@ services:
 
     stdin_open: true
     tty: true
+    privileged: true

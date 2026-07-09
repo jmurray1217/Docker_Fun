@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtSerialPort/QSerialPort>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +20,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QSerialPort serial;
+
+private slots:
+    void readSerial();
+    void sendOn();
+    void sendOff();
 };
 #endif // MAINWINDOW_H
