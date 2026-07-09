@@ -6,7 +6,11 @@ RUN pacman -Syu --noconfirm && \
         cmake \
         ninja \
         gcc \
-        qt6-base && \
+        qt6-base \
+        qt6-serialport \
+        fontconfig \
+        noto-fonts \
+        ttf-dejavu && \
     pacman -Scc --noconfirm
 
 WORKDIR /app
