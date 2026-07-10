@@ -22,10 +22,13 @@ private:
     Ui::MainWindow *ui;
 
     QSerialPort serial;
+    int hexValue = 0;
 
 private slots:
     void readSerial();
     void sendOn();
     void sendOff();
+    void getHexValue();
+    void getServoPosition(int value);
 };
 #endif // MAINWINDOW_H

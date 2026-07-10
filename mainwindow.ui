@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>420</height>
+    <height>628</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,7 @@
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -48,6 +48,18 @@
     </item>
     <item>
      <layout class="QHBoxLayout" name="buttonLayout">
+      <item>
+       <widget class="QCheckBox" name="checkBox_1"/>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_2"/>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_3"/>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_4"/>
+      </item>
       <item>
        <widget class="QPushButton" name="On_Button">
         <property name="text">
@@ -63,6 +75,25 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QSlider" name="ServoPositionController">
+      <property name="maximum">
+       <number>1023</number>
+      </property>
+      <property name="pageStep">
+       <number>10</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>5</number>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="receivedLabel">
