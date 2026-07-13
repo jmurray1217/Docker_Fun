@@ -1,9 +1,10 @@
 services:
-  qtapp:
+  qtapp_linux:
     build: .
+    profiles: ["linux"]
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"
-    container_name: dockerfun
+    container_name: dockerfun-linux
 
     environment:
       DISPLAY: ${DISPLAY}
@@ -14,6 +15,26 @@ services:
 
     network_mode: host
 
+    stdin_open: true
+    tty: true
+    privileged: true
+
+  qtapp-wsl:
+    profiles: ["wsl"]
+    build: .
+    container_name: dockerfun-wsl
+    environment:
+      # WSLg parameters 
+      - DISPLAY=:0
+      - WAYLAND_DISPLAY=wayland-0
+      - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+      - PULSE_SERVER=/mnt/wslg/PulseServer
+      - QT_X11_NO_MITSHM=1
+      - QT_QPA_PLATFORM=xcb
+    volumes:
+      # Mounts the Linux X11 socket as well as the WSLg runtime directories
+      - /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix
+      - /run/desktop/mnt/host/wslg:/mnt/wslg
     stdin_open: true
     tty: true
     privileged: true
